@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Snacks Inventary</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-size: 100%;
+                font-family: sans-serif;
+            }
+            .container-table{                
+                width: 40%;
+                margin: 100px auto;
+                background-color: rgba(225,184,127,0.15);
+                border: 2px solid #721105;
+            }
+           
+          
+            .btn-a{
+                text-decoration: none;
+                color: white;
+                text-align: center;
+                background-color: #df582f;
+                width: 100%;
+               padding: 10px 0 ;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
+            
+            table{
+                
+                margin: 0 auto;               
+                width: 90%;
+                border-spacing: 0px;
+                border-collapse: collapse;
+            }
+            thead{
+                font-size: 1.2em;          
+                border-bottom: 3px solid rgba(44,31,27,0.4);
+            }
+            td {
+                border-bottom: 2px solid rgba(44,31,27,0.4);
+                text-align: center;
+                
+                }
+                tbody tr:hover {background-color: #D6EEEE;}
+                tbody tr{
+                    height: 30px;
+                }
+                .btn-edit, .btn-drop, .btn-view{
+                   text-decoration: none;
+                color: rgba(63,64,76,1);
+                text-align: center;
+                display: inline-block;
+                background-color: rgba(0,163,181,0.4);
+                padding: 0 20px;
+                }
+                .btn-drop{
+                    background-color: rgba(217,40,123,0.4);
+                }
+                .btn-view{
+                    background-color: rgba(246,242,0,0.52);
+                }
+                
+        </style>       
+    </head>
+    <body>
+
+        <div class="container-table">
+           <a  class="btn-a" th:href="@{/snacks/new}">Add new snack</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Expiration date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="snack : ${snacks}">
+                        <td th:text="${snack.product}"></td>
+                        <td th:text="${snack.price}"></td>
+                        <td th:text="${snack.expirationDate}" ></td>
+                        <td>
+                            <a class="btn-edit" th:href="@{/snacks/edit/{id}(id=${snack.id})}">Edit</a>
+                        </td>
+                        <td>
+                            <a class=btn-drop th:href="@{/snacks/{id}(id=${snack.id})}">Drop</a>
+                        </td>
+                        <td>
+                            <a  class="btn-view" th:href="@{/snacks/view/{id}(id=${snack.id})}">View</a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+       
+          
+    </body>
+</html>

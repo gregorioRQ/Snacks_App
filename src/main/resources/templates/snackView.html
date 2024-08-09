@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Snack view</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-size: 100%;
+                font-family: sans-serif;
+            }
+
+            .snack-card{
+
+                width: 400px;
+                padding: 20px;
+                text-align: center;
+                margin: 0 auto;
+                border: 2px solid #721105;
+                background-color: rgba(225,184,127,0.15);
+                margin-top: 100px;
+            }
+
+            .snack-card img{
+                width: 100%;
+            }
+            .text-card{
+                margin-top: 20px;
+                margin-bottom: 20px;
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="snack-card" th:object="${snack}">
+            <div class="text-card">
+                <p>Product: <span th:text="*{product}"></span></p>
+                <p>Price: <span th:text="*{price}"></span></p>
+                <p>Expiration date: <span th:text="*{expirationDate}"></span></p>
+            </div>
+            <img th:src="@{/images/__${ruta}__}" alt="Snack image">
+        </div>
+    </body>
+</html>
